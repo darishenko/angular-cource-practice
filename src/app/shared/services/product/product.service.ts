@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:3000/products';
+  private readonly baseUrl = 'http://localhost:3000/products';
 
   constructor(private httpClient: HttpClient) {}
 
@@ -15,7 +15,7 @@ export class ProductService {
   }
 
   public get(id: number): Observable<any> {
-    return this.httpClient.get(this.baseUrl + id, {});
+    return this.httpClient.get(this.baseUrl + `/${id}`, {});
   }
 
   public delete(id: number): Observable<any> {

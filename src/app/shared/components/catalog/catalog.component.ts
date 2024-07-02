@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../models/product/product';
+import { Product } from '../../models/product/product.model';
 import { ProductService } from '../../services/product/product.service';
 import { NgFor, NgOptimizedImage, NgStyle } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 import { AddToCartButtonComponent } from '../add-to-cart-button/add-to-cart-button.component';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RatingComponent } from '../rating/rating.component';
 
 @Component({
   selector: 'app-catalog',
@@ -19,6 +20,9 @@ import { AddToCartButtonComponent } from '../add-to-cart-button/add-to-cart-butt
     HeaderComponent,
     FaIconComponent,
     AddToCartButtonComponent,
+    RouterLink,
+    RouterLinkActive,
+    RatingComponent,
   ],
 })
 export class CatalogComponent implements OnInit {
@@ -39,6 +43,4 @@ export class CatalogComponent implements OnInit {
       this.ngOnInit();
     });
   }
-
-  protected readonly faStar = faStar;
 }

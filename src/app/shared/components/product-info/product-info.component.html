@@ -1,0 +1,18 @@
+<article *ngIf="product">
+  <div class="product-info">
+    <img alt="{{product.title}}" src="{{product.image}}" title="{{product.title}}">
+    <div class="product-info__details">
+      <h1>{{ product.title }}</h1>
+      <div class="product-info__rating">
+        <app-rating [rating]="product.rating.rate"/>
+        <span>{{ product.rating.rate }}</span>
+        <span class="product-info__rating-review-count">({{ product.rating.count + " reviews" }})</span>
+      </div>
+      <app-add-to-cart-button [disabled]="product.stock < 1" [maxCount]="product.stock"/>
+      <p>{{ product.stock }}</p>
+      <p class="product-info__availability {{availability.styleClass}}">{{ availability.value }}</p>
+      <b>Price: {{ product.price }}$</b>
+      <p>{{ product.description }}</p>
+    </div>
+  </div>
+</article>

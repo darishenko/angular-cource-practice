@@ -9,6 +9,9 @@ import { NgIf } from '@angular/common';
   styleUrl: 'add-to-cart-button.component.css',
 })
 export class AddToCartButtonComponent {
+  @Input() disabled!: boolean;
+  @Input() maxCount!: number;
+
   cartCount: number = 0;
 
   incrementCartCount() {

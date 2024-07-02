@@ -1,0 +1,5 @@
+<section *ngIf="product">
+  <app-product-info [product]="product"/>
+  <hr/>
+  <app-product-reviews [productId]="product.id"/>
+</section>

@@ -1,0 +1,46 @@
+.product-info {
+  margin: 50px;
+  display: flex;
+  gap: 100px;
+}
+
+.product-info img {
+  max-width: 400px;
+}
+
+.product-info__rating {
+  display: flex;
+  align-items: end;
+  font-style: oblique;
+}
+
+.product-info__rating span {
+  opacity: 60%;
+}
+
+.product-info__rating-review-count {
+  margin-left: 20px;
+}
+
+.product-info__availability {
+  margin-top: 0;
+  font-style: oblique;
+}
+
+.availability--in-stock {
+  color: green;
+}
+
+.availability--out-of-stock {
+  color: red;
+}
+
+.availability--almost-sold-out {
+  color: orange;
+}
+
+.product-info__details {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}

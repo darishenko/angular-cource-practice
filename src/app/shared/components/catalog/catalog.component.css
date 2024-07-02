@@ -14,6 +14,11 @@
   transition: 1s ease;
 }
 
+.card__item-link {
+  text-decoration: none;
+  color: black;
+}
+
 .card__content {
   margin: 21px 20px;
   position: relative;
@@ -37,7 +42,7 @@
 }
 
 .card__details p {
-  margin: 5px;
+  margin: 5px 15px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -82,47 +87,4 @@
 
 .card:hover .card__content {
   transition: 0.5s ease;
-}
-
-.card__rating {
-  margin: auto;
-  position: relative;
-  width: fit-content;
-}
-
-.catalog__card-rating-stars {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  list-style-type: none;
-}
-
-.card__rating {
-  padding: 0;
-  display: inline-block;
-  position: relative;
-  height: 20px;
-  width: auto;
-  font-size: 25px;
-  color: #E9E8E8;
-}
-
-.card__star-rating {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  list-style-type: none;
-}
-
-.card__star-rating--upper {
-  position: absolute;
-  z-index: 1;
-  overflow: hidden;
-  color: #FFC114;
-}
-
-.card__star-rating--lower {
-  display: flex;
-  z-index: 0;
 }

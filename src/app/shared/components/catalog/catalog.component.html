@@ -1,30 +1,17 @@
 <section class="catalog__cards">
   <article *ngFor="let product of products" class="card" id="catalog-card-{{product.id}}">
-    <div class="card__content">
-      <div class="card__img">
-        <img src="{{product.image}}" alt="{{product.title}}" title="{{product.title}}">
-      </div>
-      <div class="card__details">
-        <p class="card__name">{{ product.title }}</p>
-        <div class="card__rating">
-          <ul class="card__star-rating card__star-rating--upper" [ngStyle]="{'width': product.rating.rate * 20 + '%'}">
-            <fa-icon [icon]="faStar"/>
-            <fa-icon [icon]="faStar"/>
-            <fa-icon [icon]="faStar"/>
-            <fa-icon [icon]="faStar"/>
-            <fa-icon [icon]="faStar"/>
-          </ul>
-          <ul class="card__star-rating card__star-rating--lower">
-            <fa-icon [icon]="faStar"/>
-            <fa-icon [icon]="faStar"/>
-            <fa-icon [icon]="faStar"/>
-            <fa-icon [icon]="faStar"/>
-            <fa-icon [icon]="faStar"/>
-          </ul>
+    <a class="card__item-link" routerLink="/product/{{product.id}}">
+      <div class="card__content">
+        <div class="card__img">
+          <img alt="{{product.title}}" src="{{product.image}}" title="{{product.title}}">
         </div>
-        <p class="card__price">{{ product.price + '$' }}</p>
+        <div class="card__details">
+          <p class="card__name">{{ product.title }}</p>
+          <app-rating [rating]="product.rating.rate"/>
+          <p class="card__price">{{ product.price + '$' }}</p>
+        </div>
       </div>
-    </div>
+    </a>
     <div class="card__buttons">
       <app-add-to-cart-button/>
       <button>
