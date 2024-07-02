@@ -1,0 +1,8 @@
+<button *ngIf="cartCount===0" (click)="incrementCartCount()">
+  add to cart
+</button>
+<div *ngIf="cartCount>0" class="cart-counter">
+  <button (click)="decrementCartCount()">-</button>
+  <span>{{ cartCount }}</span>
+  <button (click)="incrementCartCount()">+</button>
+</div>

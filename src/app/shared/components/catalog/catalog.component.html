@@ -1,0 +1,38 @@
+<section class="catalog__cards">
+  <article *ngFor="let product of products" class="card" id="catalog-card-{{product.id}}">
+    <div class="card__content">
+      <div class="card__img">
+        <img src="{{product.image}}" alt="{{product.title}}" title="{{product.title}}">
+      </div>
+      <div class="card__details">
+        <p class="card__name">{{ product.title }}</p>
+        <div class="card__rating">
+          <ul class="card__star-rating card__star-rating--upper" [ngStyle]="{'width': product.rating.rate * 20 + '%'}">
+            <fa-icon [icon]="faStar"/>
+            <fa-icon [icon]="faStar"/>
+            <fa-icon [icon]="faStar"/>
+            <fa-icon [icon]="faStar"/>
+            <fa-icon [icon]="faStar"/>
+          </ul>
+          <ul class="card__star-rating card__star-rating--lower">
+            <fa-icon [icon]="faStar"/>
+            <fa-icon [icon]="faStar"/>
+            <fa-icon [icon]="faStar"/>
+            <fa-icon [icon]="faStar"/>
+            <fa-icon [icon]="faStar"/>
+          </ul>
+        </div>
+        <p class="card__price">{{ product.price + '$' }}</p>
+      </div>
+    </div>
+    <div class="card__buttons">
+      <app-add-to-cart-button/>
+      <button>
+        edit
+      </button>
+      <button (click)="deleteProduct(product.id)">
+        delete
+      </button>
+    </div>
+  </article>
+</section>

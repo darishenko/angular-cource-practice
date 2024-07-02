@@ -1,0 +1,128 @@
+.catalog__cards {
+  display: flex;
+  gap: 30px;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 300px;
+  height: 400px;
+  text-align: center;
+  background-color: #E9E8E8;
+  position: relative;
+  transition: 1s ease;
+}
+
+.card__content {
+  margin: 21px 20px;
+  position: relative;
+  background-color: white;
+  transition: max-height 1s ease;
+}
+
+.card__img {
+  height: 220px;
+}
+
+.card__content img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.card__details {
+  padding-top: 40px;
+  padding-bottom: 5px;
+  transition: padding 1s ease;
+}
+
+.card__details p {
+  margin: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__name {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.card__price {
+  font-weight: bold;
+}
+
+.card__price--previous {
+  text-decoration: line-through;
+}
+
+.card__buttons {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  visibility: hidden;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  width: calc(100% - 35px);
+}
+
+.card:hover .card__buttons {
+  visibility: visible;
+  opacity: 1;
+  bottom: 15px;
+  transition: 0.7s ease;
+}
+
+.card:hover .card__details {
+  padding-top: 20px;
+  transition: 0.5s ease;
+}
+
+.card:hover .card__content {
+  transition: 0.5s ease;
+}
+
+.card__rating {
+  margin: auto;
+  position: relative;
+  width: fit-content;
+}
+
+.catalog__card-rating-stars {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.card__rating {
+  padding: 0;
+  display: inline-block;
+  position: relative;
+  height: 20px;
+  width: auto;
+  font-size: 25px;
+  color: #E9E8E8;
+}
+
+.card__star-rating {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+}
+
+.card__star-rating--upper {
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+  color: #FFC114;
+}
+
+.card__star-rating--lower {
+  display: flex;
+  z-index: 0;
+}
