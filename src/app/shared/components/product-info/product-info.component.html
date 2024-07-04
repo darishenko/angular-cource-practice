@@ -9,8 +9,7 @@
         <span class="product-info__rating-review-count">({{ product.rating.count + " reviews" }})</span>
       </div>
       <app-add-to-cart-button [disabled]="product.stock < 1" [maxCount]="product.stock"/>
-      <p>{{ product.stock }}</p>
-      <p class="product-info__availability {{availability.styleClass}}">{{ availability.value }}</p>
+      <p [availableCount]="product.stock" appProductAvailability></p>
       <b>Price: {{ product.price }}$</b>
       <p>{{ product.description }}</p>
     </div>

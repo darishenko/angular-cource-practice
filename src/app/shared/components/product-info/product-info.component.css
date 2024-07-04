@@ -22,23 +22,6 @@
   margin-left: 20px;
 }
 
-.product-info__availability {
-  margin-top: 0;
-  font-style: oblique;
-}
-
-.availability--in-stock {
-  color: green;
-}
-
-.availability--out-of-stock {
-  color: red;
-}
-
-.availability--almost-sold-out {
-  color: orange;
-}
-
 .product-info__details {
   display: flex;
   flex-direction: column;
