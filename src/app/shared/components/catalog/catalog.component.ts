@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Product } from '../../models/product/product.model';
 import { ProductService } from '../../services/product/product.service';
-import { NgFor, NgOptimizedImage, NgStyle } from '@angular/common';
+import { NgFor, NgIf, NgOptimizedImage, NgStyle } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { AddToCartButtonComponent } from '../add-to-cart-button/add-to-cart-button.component';
@@ -23,24 +23,20 @@ import { RatingComponent } from '../rating/rating.component';
     RouterLink,
     RouterLinkActive,
     RatingComponent,
+    NgIf,
   ],
 })
-export class CatalogComponent implements OnInit {
-  products!: Product[];
+export class CatalogComponent {
+  @Input() products!: Product[];
+
+  @Output() wasDeleted = new EventEmitter<number>();
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit() {
-    this.productService.getAll().subscribe((data) => {
-      console.log(data);
-      this.products = data;
-    });
-  }
-
   deleteProduct(id: number) {
     this.productService.delete(id).subscribe((data) => {
+      this.wasDeleted.emit(id);
       console.log(data);
-      this.ngOnInit();
     });
   }
 }
