@@ -1,0 +1,52 @@
+.product-info {
+  margin: 20px;
+  display: flex;
+  gap: 100px;
+}
+
+.product-info img {
+  margin-right: 0;
+  margin-left: auto;
+  max-width: 400px;
+}
+
+.product-info__form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.product-info__form label {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.form__message--invalid {
+  color: red;
+}
+
+.form__message--success-submit {
+  color: green;
+}
+
+.form__input--invalid {
+  outline: none;
+  border: 1px solid red;
+}
+
+.form__input--invalid:focus {
+  border: 2px solid red;
+}
+
+.product-info__form textarea {
+  height: 125px;
+  resize: none;
+}
+
+.product-info__form button {
+  margin-top: 20px;
+}
+
+.form__button--submit-enabled {
+  background: #45aaf2;
+}

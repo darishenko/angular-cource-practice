@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Product } from '../../models/product/product.model';
 
 @Injectable({
   providedIn: 'root',
@@ -20,5 +21,9 @@ export class ProductService {
 
   public delete(id: number): Observable<any> {
     return this.httpClient.delete(this.baseUrl + `/${id}`);
+  }
+
+  public updatePartial(product: Product): Observable<any> {
+    return this.httpClient.patch(this.baseUrl + `/${product.id}`, product);
   }
 }
