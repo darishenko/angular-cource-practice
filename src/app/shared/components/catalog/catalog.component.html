@@ -14,7 +14,7 @@
     </a>
     <div class="card__buttons">
       <app-add-to-cart-button/>
-      <button>
+      <button routerLink="/product/edit/{{product.id}}">
         edit
       </button>
       <button (click)="deleteProduct(product.id)">
