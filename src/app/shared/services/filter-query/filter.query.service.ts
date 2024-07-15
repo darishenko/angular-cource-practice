@@ -20,7 +20,7 @@ export class FilterQueryService {
     let httpParams = new HttpParams();
     for (let param in formValues) {
       let paramValue = formValues[param];
-      if (paramValue != null) {
+      if (paramValue != null && paramValue !== false) {
         const filterItem = this.productFilter[param];
         httpParams = httpParams.set(
           filterItem?.param,
@@ -35,7 +35,7 @@ export class FilterQueryService {
     let result: { [key: string]: any } = {};
     for (let param in formValues) {
       let paramValue = formValues[param];
-      if (paramValue != null) {
+      if (paramValue != null && paramValue !== false) {
         result[param] = paramValue;
       }
     }

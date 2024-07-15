@@ -111,7 +111,7 @@ export class HomeComponent implements OnInit {
   private updateBadges() {
     this.badges = [];
     Object.entries(this.productFilterForm.value).forEach(([filter, value]) => {
-      if (value != null) {
+      if (value != null && value !== false) {
         const badge = this.badgesMap[filter];
         this.badges.push({
           key: filter,
