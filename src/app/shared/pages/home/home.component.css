@@ -1,10 +1,12 @@
 .wrapper {
   display: grid;
-  grid-gap: 20px;
+  grid-gap: 30px;
   grid-template-columns: 1fr 5fr;
   grid-template-areas:
     "header  header"
+    "sidebar  nav"
     "sidebar content";
+  height: 100%;
 }
 
 .content {
@@ -13,6 +15,62 @@
 
 aside {
   grid-area: sidebar;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
+.filter {
+  background-color: #45aaf2;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-weight: bold;
+  border: 1px solid black;
+}
+
+.filter input {
+  margin-top: 5px;
+}
+
+.filter__checkbox label {
+  margin-right: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.filter__checkbox input[type=checkbox] {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.filter__input--invalid {
+  outline: none;
+  border: 2px solid red;
+}
+
+.filter__message--invalid {
+  color: red;
+}
+
+.filter__found-counter {
+  border: 1px solid black;
+  background: #45aaf2;
+}
+
+.filter__found-counter p {
+  font-weight: bold;
+  text-align: center;
+}
+
+.badges {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 10px;
+  grid-area: nav;
+  overflow-x: auto;
+}
 

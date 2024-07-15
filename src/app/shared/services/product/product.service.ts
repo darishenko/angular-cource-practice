@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../../models/product/product.model';
 
@@ -11,8 +11,8 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) {}
 
-  public getAll(): Observable<any> {
-    return this.httpClient.get(this.baseUrl);
+  public getAll(params?: HttpParams): Observable<any> {
+    return this.httpClient.get(this.baseUrl, { params });
   }
 
   public get(id: number): Observable<any> {
