@@ -10,7 +10,7 @@ export class FilterQueryService {
     ratingTo: { param: 'rating.rate_lte' },
     priceFrom: { param: 'price_gte' },
     priceTo: { param: 'price_lte' },
-    isInStock: { param: 'stock_gt', initValue: 0 },
+    inStock: { param: 'stock_gt', initValue: 0 },
     hasReviews: { param: 'rating.count_gt', initValue: 0 },
   };
 
@@ -20,7 +20,7 @@ export class FilterQueryService {
     let httpParams = new HttpParams();
     for (let param in formValues) {
       let paramValue = formValues[param];
-      if (paramValue) {
+      if (paramValue != null) {
         const filterItem = this.productFilter[param];
         httpParams = httpParams.set(
           filterItem?.param,
@@ -35,7 +35,7 @@ export class FilterQueryService {
     let result: { [key: string]: any } = {};
     for (let param in formValues) {
       let paramValue = formValues[param];
-      if (paramValue) {
+      if (paramValue != null) {
         result[param] = paramValue;
       }
     }

@@ -4,6 +4,7 @@
   grid-template-columns: 1fr 5fr;
   grid-template-areas:
     "header  header"
+    "sidebar  nav"
     "sidebar content";
   height: 100%;
 }
@@ -63,3 +64,13 @@ aside {
   font-weight: bold;
   text-align: center;
 }
+
+.badges {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  gap: 10px;
+  grid-area: nav;
+  overflow-x: auto;
+}
+

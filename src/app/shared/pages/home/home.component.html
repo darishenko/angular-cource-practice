@@ -28,7 +28,7 @@
         </p>
       </div>
       <div class="filter__checkbox">
-        <input formControlName="isInStock" id="inStock" type="checkbox">
+        <input formControlName="inStock" id="inStock" type="checkbox">
         <label for="inStock">In stock</label>
       </div>
       <div class="filter__checkbox">
@@ -42,5 +42,9 @@
       <p>{{ products ? products.length : 0 }} products found</p>
     </div>
   </aside>
+  <div class="badges">
+    <app-badge (wasDeleted)="updateAfterFilterBadgeDelete(badge.key)" *ngFor="let badge of badges"
+               [content]="badge"></app-badge>
+  </div>
   <app-catalog (wasDeleted)="updateAfterProductDelete()" [products]="products" class="content"/>
 </div>

@@ -8,13 +8,16 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { ProductService } from '../../services/product/product.service';
 import { FilterQueryService } from '../../services/filter-query/filter.query.service';
 import { Product } from '../../models/product/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
+import { BadgeComponent } from '../../components/badge/badge.component';
+import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
   selector: 'app-home',
@@ -26,18 +29,30 @@ import { HttpParams } from '@angular/common/http';
     NgIf,
     NgClass,
     ReactiveFormsModule,
+    NgForOf,
+    BadgeComponent,
+    FaIconComponent,
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 export class HomeComponent implements OnInit {
   products!: Product[];
+  badges: { key: string; value: string }[] = [];
+  badgesMap: { [key: string]: { content: string; hasValue: boolean } } = {
+    priceFrom: { content: 'Price from ', hasValue: true },
+    priceTo: { content: 'Price to ', hasValue: true },
+    ratingFrom: { content: 'Rating from ', hasValue: true },
+    ratingTo: { content: 'Rating to ', hasValue: true },
+    inStock: { content: 'In stock', hasValue: false },
+    hasReviews: { content: 'Has reviews', hasValue: false },
+  };
   productFilterForm = new FormGroup({
     priceFrom: new FormControl(null, [Validators.min(0)]),
     priceTo: new FormControl(null, [Validators.min(0)]),
     ratingFrom: new FormControl(null, [Validators.min(0)]),
     ratingTo: new FormControl(null, [Validators.min(0)]),
-    isInStock: new FormControl(null),
+    inStock: new FormControl(null),
     hasReviews: new FormControl(null),
   });
 
@@ -49,15 +64,22 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log('init');
     this.route.queryParams.pipe(take(1)).subscribe((params) => {
       this.productFilterForm.patchValue(params);
-      console.log('form');
     });
     this.route.queryParams.subscribe((params) => {
       this.findProducts();
-      console.log('params');
+      this.updateBadges();
     });
+  }
+
+  updateAfterFilterBadgeDelete(key: string) {
+    this.productFilterForm.get(key)?.reset();
+    this.filter();
+  }
+
+  updateAfterProductDelete() {
+    this.getProducts();
   }
 
   filter() {
@@ -70,10 +92,6 @@ export class HomeComponent implements OnInit {
   resetFilter() {
     this.productFilterForm.reset();
     this.updateUrl({});
-  }
-
-  updateAfterProductDelete() {
-    this.getProducts();
   }
 
   private findProducts() {
@@ -90,10 +108,25 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  private updateBadges() {
+    this.badges = [];
+    Object.entries(this.productFilterForm.value).forEach(([filter, value]) => {
+      if (value != null) {
+        const badge = this.badgesMap[filter];
+        this.badges.push({
+          key: filter,
+          value: badge.content.concat(badge.hasValue ? value : ''),
+        });
+      }
+    });
+  }
+
   private updateUrl(queryParams: { [key: string]: any }, replaceUrl = true) {
     this.router.navigate([], {
       queryParams: queryParams,
       replaceUrl: replaceUrl,
     });
   }
+
+  protected readonly faTimes = faTimes;
 }
