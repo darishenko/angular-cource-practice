@@ -13,7 +13,10 @@
       </div>
     </a>
     <div class="card__buttons">
-      <app-add-to-cart-button/>
+      <app-add-to-cart-button (wasCountChanged)="handleCartCountChange($event)" [cartCount]="getCartCount(product.id)"
+                              [disabled]="product.stock < 1"
+                              [itemId]="product.id"
+                              [maxCount]="product.stock"></app-add-to-cart-button>
       <button routerLink="/product/edit/{{product.id}}">
         edit
       </button>

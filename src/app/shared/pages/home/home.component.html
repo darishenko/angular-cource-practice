@@ -46,5 +46,5 @@
     <app-badge (wasDeleted)="updateAfterFilterBadgeDelete(badge.key)" *ngFor="let badge of badges"
                [content]="badge"></app-badge>
   </div>
-  <app-catalog (wasDeleted)="updateAfterProductDelete()" [products]="products" class="content"/>
+  <app-catalog (wasDeleted)="deleteProduct($event)" [products]="products" class="content"/>
 </div>

@@ -1,0 +1,20 @@
+<table class="cart__table">
+  <tr>
+    <th>Product ID</th>
+    <th>Product Name</th>
+    <th>Count</th>
+    <th>Price</th>
+    <th>Total Price</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let cartItem of cartItems">
+    <td>{{ cartItem.id }}</td>
+    <td>{{ cartItem.title }}</td>
+    <td>{{ cartItem.count }}</td>
+    <td>{{ cartItem.price }}</td>
+    <td>{{ cartItem.count * cartItem.price }}</td>
+    <td>
+      <fa-icon (click)="deleteItem(cartItem.id)" [icon]="faTimes"></fa-icon>
+    </td>
+  </tr>
+</table>

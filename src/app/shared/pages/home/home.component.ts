@@ -78,8 +78,10 @@ export class HomeComponent implements OnInit {
     this.filter();
   }
 
-  updateAfterProductDelete() {
-    this.getProducts();
+  deleteProduct($event: number) {
+    this.productService.delete($event).subscribe(() => {
+      this.getProducts();
+    });
   }
 
   filter() {

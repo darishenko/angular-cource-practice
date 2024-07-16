@@ -1,0 +1,19 @@
+.cart__table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.cart__table tr {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  height: 60px;
+}
+
+.cart__table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.cart__table td fa-icon {
+  cursor: pointer;
+}
