@@ -7,7 +7,7 @@
     <th>Total Price</th>
     <th></th>
   </tr>
-  <tr *ngFor="let cartItem of cartItems">
+  <tr *ngFor="let cartItem of cartItems" @hiddenVisible>
     <td>{{ cartItem.id }}</td>
     <td>{{ cartItem.title }}</td>
     <td>{{ cartItem.count }}</td>
