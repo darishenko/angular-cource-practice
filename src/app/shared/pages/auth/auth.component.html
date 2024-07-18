@@ -1,0 +1,35 @@
+<form [formGroup]="authForm" class="auth-form">
+  <h2 class="auth-form__title">{{ isUserSignInFormText[signInKey].formTitle }}</h2>
+  <label for="email">Email address</label>
+  <input formControlName="email" id="email" placeholder="Email">
+  <p *ngIf="authForm.get('email')?.hasError('required') && authForm.get('email')?.touched"
+     class="auth-form__message--error">
+    The field must be filled in!
+  </p>
+  <p *ngIf="authForm.get('email')?.hasError('email') && authForm.get('email')?.touched"
+     class="auth-form__message--error">
+    Invalid email format!
+  </p>
+  <label for="email">Password</label>
+  <input formControlName="password" id="password" placeholder="Password" type="password">
+  <p *ngIf="authForm.get('password')?.hasError('required') && authForm.get('password')?.touched"
+     class="auth-form__message--error">
+    The field must be filled in!
+  </p>
+  <p *ngIf="authForm.get('password')?.hasError('minlength') && authForm.get('password')?.touched"
+     class="auth-form__message--error">
+    The minimum password length is 8 characters!
+  </p>
+  <p *ngIf="authForm.get('password')?.hasError('pattern') && authForm.get('password')?.touched"
+     class="auth-form__message--error">
+    The password must consist of numbers and at least 1 capital letter!
+  </p>
+  <button (click)="isUserSignInFormText[signInKey].submit()" [ngClass]="{'auth-form_button--enabled': authForm.valid}"
+          class="auth-form_button"
+          type="submit">{{ isUserSignInFormText[signInKey].submitButtonText }}
+  </button>
+  <p *ngIf="loggedInFailed" class="auth-form__message--error">{{ isUserSignInFormText[signInKey].failMessage }}</p>
+  <p class="auth-form__note">{{ isUserSignInFormText[signInKey].note }} Please, click <span (click)="toggleSignIn()"
+                                                                                            class="auth-form__link">here</span>!
+  </p>
+</form>

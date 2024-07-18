@@ -38,3 +38,8 @@
 .header__section--right input {
   font-size: 20px;
 }
+
+.header__link:hover {
+  cursor: pointer;
+  color: black;
+}

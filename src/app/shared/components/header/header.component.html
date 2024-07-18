@@ -6,18 +6,16 @@
   <div class="header__sections">
     <div class="header__section header__menu">
       <ul>
-        <li>Shop</li>
-        <li>Authentication</li>
-        <li>
+        <li class="header__link" routerLink="/">Shop</li>
+        <li *ngIf="!isUserAuthenticated" class="header__link" routerLink="/auth">Authentication</li>
+        <li class="header__link" routerLink="/cart">
           <fa-icon [icon]="faShoppingCart"></fa-icon>
         </li>
       </ul>
     </div>
-    <div class="header__section header__section--right">
-      <div class="header__search">
-        <input placeholder="Search...">
-      </div>
-      <fa-icon [icon]="faSignOutAlt"></fa-icon>
+    <div *ngIf="isUserAuthenticated" class="header__section header__section--right">
+      <p>Hello, {{ userName }}!</p>
+      <fa-icon (click)="logout()" [icon]="faSignOutAlt" class="header__link"></fa-icon>
     </div>
   </div>
 </header>
