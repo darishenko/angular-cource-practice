@@ -53,10 +53,9 @@ export class ProductInfoEditComponent implements OnChanges {
       const updatedProduct: Product = this.productEditForm.value;
       updatedProduct.id = this.product.id;
       this.productService.updatePartial(updatedProduct).subscribe(
-        (response) => {
+        () => {
           this.isUpdateSuccessful = true;
           setTimeout(() => (this.isUpdateSuccessful = false), 2000);
-          console.log('Product updated successfully', response);
         },
         (error) => {
           console.error('Error updating product', error);
@@ -69,12 +68,10 @@ export class ProductInfoEditComponent implements OnChanges {
     const value = control.value;
     if (value) {
       const decimalPart = value.toString().split('.')[1];
-
       if (decimalPart && decimalPart.length > 2) {
         return { decimalPlaces: { value: value } };
       }
     }
-
     return null;
   }
 }

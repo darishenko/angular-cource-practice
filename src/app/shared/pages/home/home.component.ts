@@ -16,7 +16,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
 import { HttpParams } from '@angular/common/http';
 import { BadgeComponent } from '../../components/badge/badge.component';
-import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 @Component({
@@ -48,10 +47,10 @@ export class HomeComponent implements OnInit {
     hasReviews: { content: 'Has reviews', hasValue: false },
   };
   productFilterForm = new FormGroup({
-    priceFrom: new FormControl(null, [Validators.min(0)]),
     priceTo: new FormControl(null, [Validators.min(0)]),
-    ratingFrom: new FormControl(null, [Validators.min(0)]),
+    priceFrom: new FormControl(null, [Validators.min(0)]),
     ratingTo: new FormControl(null, [Validators.min(0)]),
+    ratingFrom: new FormControl(null, [Validators.min(0)]),
     inStock: new FormControl(null),
     hasReviews: new FormControl(null),
   });
@@ -67,7 +66,7 @@ export class HomeComponent implements OnInit {
     this.route.queryParams.pipe(take(1)).subscribe((params) => {
       this.productFilterForm.patchValue(params);
     });
-    this.route.queryParams.subscribe((params) => {
+    this.route.queryParams.subscribe(() => {
       this.findProducts();
       this.updateBadges();
     });
@@ -104,9 +103,8 @@ export class HomeComponent implements OnInit {
   }
 
   private getProducts(httpParams?: HttpParams) {
-    this.productService.getAll(httpParams).subscribe((data) => {
-      this.products = data;
-      console.log(data);
+    this.productService.getAll(httpParams).subscribe((products) => {
+      this.products = products;
     });
   }
 
@@ -129,6 +127,4 @@ export class HomeComponent implements OnInit {
       replaceUrl: replaceUrl,
     });
   }
-
-  protected readonly faTimes = faTimes;
 }

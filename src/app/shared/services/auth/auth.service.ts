@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of } from 'rxjs';
 import { User } from '../../models/user/user.model';
 import { UserService } from '../user/user.service';
 
@@ -21,22 +21,31 @@ export class AuthService {
   }
 
   signIn(email: string, password: string): Observable<boolean> {
-    return this.userService
-      .getByEmailAndPassword(email, password)
-      .pipe(map((users) => this.login(!users.empty ? users[0] : null)));
+    return this.userService.getByEmailAndPassword(email, password).pipe(
+      map((users) => this.login(users.length > 0 ? users[0] : null)),
+      catchError(() => of(false)),
+    );
   }
 
   signUp(user: User): Observable<boolean> {
-    return this.userService.add(user).pipe(map((user) => this.login(user)));
+    return this.userService.add(user).pipe(
+      map((newUser) => this.login(newUser)),
+      catchError(() => of(false)),
+    );
   }
 
-  login(user: User): boolean {
-    sessionStorage.setItem(
-      this.SESSION_STORAGE_ITEM_USER,
-      JSON.stringify({ id: user?.id, email: user?.email }),
-    );
-    this.currentUserBehaviorSubject.next(user);
-    return user != null;
+  login(user: User | null): boolean {
+    if (user) {
+      sessionStorage.setItem(
+        this.SESSION_STORAGE_ITEM_USER,
+        JSON.stringify({ id: user.id, email: user.email }),
+      );
+      this.currentUserBehaviorSubject.next(user);
+      return true;
+    } else {
+      this.logout();
+      return false;
+    }
   }
 
   logout(): void {

@@ -28,14 +28,18 @@
   cursor: pointer;
 }
 
-.auth-form_button {
+.auth-form__button {
   margin-top: 30px;
   padding: 2px;
   border: 1px solid black;
   cursor: pointer;
 }
 
-.auth-form_button--enabled {
+.auth-form__button:disabled {
+  cursor: not-allowed;
+}
+
+.auth-form__button:enabled {
   background: #45aaf2;
 }
 

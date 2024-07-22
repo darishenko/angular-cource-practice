@@ -2,9 +2,7 @@
   <article *ngFor="let product of products" class="card" id="catalog-card-{{product.id}}">
     <a class="card__item-link" routerLink="/product/{{product.id}}">
       <div class="card__content">
-        <div class="card__img">
-          <img alt="{{product.title}}" src="{{product.image}}" title="{{product.title}}">
-        </div>
+        <img alt="{{product.title}}" class="card__img" src="{{product.image}}" title="{{product.title}}">
         <div class="card__details">
           <p class="card__name">{{ product.title }}</p>
           <app-rating [rating]="product.rating.rate"/>

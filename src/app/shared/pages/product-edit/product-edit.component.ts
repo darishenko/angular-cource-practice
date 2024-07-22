@@ -12,7 +12,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrl: './product-edit.component.css',
 })
 export class ProductEditComponent implements OnInit {
-  id: number = this.route.snapshot.queryParams['id'];
+  id!: number;
   product!: Product;
 
   constructor(
@@ -25,7 +25,6 @@ export class ProductEditComponent implements OnInit {
       this.id = +params.get('id')!;
       if (!isNaN(this.id)) {
         this.productService.get(this.id).subscribe((product) => {
-          console.log(product);
           this.product = product;
         });
       } else {

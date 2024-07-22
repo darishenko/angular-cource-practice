@@ -34,8 +34,7 @@ export class ProductInfoComponent implements OnInit {
       (item: CartItem) => {
         this.cartCount = item.count;
       },
-      (error) => {
-        console.log(error);
+      () => {
         this.cartCount = 0;
       },
     );

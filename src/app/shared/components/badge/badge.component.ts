@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 
@@ -12,11 +12,10 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons/faTimes';
 export class BadgeComponent {
   @Input() content!: { key: string; value: string };
 
-  @Output() wasDeleted = new EventEmitter();
+  wasDeleted = output();
+  protected readonly faTimes = faTimes;
 
   delete() {
     this.wasDeleted.emit();
   }
-
-  protected readonly faTimes = faTimes;
 }

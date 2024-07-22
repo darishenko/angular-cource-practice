@@ -32,17 +32,14 @@ const hiddenVisible = trigger('hiddenVisible', [
 })
 export class CartComponent implements OnInit {
   cartItems: CartItem[] = [];
+  protected readonly faTimes = faTimes;
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
     this.cartService.getCart().subscribe({
       next: (cartItems) => {
-        console.log(cartItems);
         this.cartItems = cartItems;
-      },
-      error: (error) => {
-        console.error('Error fetching cart items', error);
       },
     });
   }
@@ -52,6 +49,4 @@ export class CartComponent implements OnInit {
       this.cartItems = this.cartItems.filter((item) => id !== item.id);
     });
   }
-
-  protected readonly faTimes = faTimes;
 }

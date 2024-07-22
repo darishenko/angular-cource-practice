@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, output } from '@angular/core';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -14,7 +14,7 @@ export class AddToCartButtonComponent {
   @Input() maxCount!: number;
   @Input() cartCount: number = 0;
 
-  @Output() wasCountChanged = new EventEmitter<{ id: number; count: number }>();
+  wasCountChanged = output<{ id: number; count: number }>();
 
   incrementCartCount() {
     this.cartCount++;

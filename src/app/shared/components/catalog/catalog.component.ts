@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, output } from '@angular/core';
 import { Product } from '../../models/product/product.model';
 import { NgFor, NgIf, NgOptimizedImage, NgStyle } from '@angular/common';
 import { HeaderComponent } from '../header/header.component';
@@ -8,7 +8,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { RatingComponent } from '../rating/rating.component';
 import { CartItem } from '../../models/cart-item/cart-item.model';
 import { CartService } from '../../services/cart/cart.service';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-catalog',
@@ -31,9 +30,10 @@ import { map } from 'rxjs';
 export class CatalogComponent implements OnInit {
   @Input() products!: Product[];
 
-  @Output() wasDeleted = new EventEmitter<number>();
+  wasDeleted = output<number>();
 
   cartItems: CartItem[] = [];
+  protected readonly CartItem = CartItem;
 
   constructor(private cartService: CartService) {}
 
@@ -62,7 +62,4 @@ export class CatalogComponent implements OnInit {
     const item = this.cartItems.find((cartItem) => cartItem.id === productId);
     return item ? item.count : 0;
   }
-
-  protected readonly CartItem = CartItem;
-  protected readonly map = map;
 }

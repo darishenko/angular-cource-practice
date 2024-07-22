@@ -14,7 +14,7 @@ import { NgIf } from '@angular/common';
   styleUrl: './product-details.component.css',
 })
 export class ProductDetailsComponent implements OnInit {
-  id: number = this.route.snapshot.queryParams['id'];
+  id!: number;
   product!: Product;
 
   constructor(
@@ -27,7 +27,6 @@ export class ProductDetailsComponent implements OnInit {
       this.id = +params.get('id')!;
       if (!isNaN(this.id)) {
         this.productService.get(this.id).subscribe((product) => {
-          console.log(product);
           this.product = product;
         });
       } else {

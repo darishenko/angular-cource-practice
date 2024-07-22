@@ -8,6 +8,7 @@
   margin-right: 0;
   margin-left: auto;
   max-width: 400px;
+  max-height: 400px;
 }
 
 .product-info__form {
@@ -25,7 +26,7 @@
   color: red;
 }
 
-.form__message--success-submit {
+.form__message--success {
   color: green;
 }
 
@@ -43,10 +44,16 @@
   resize: none;
 }
 
-.product-info__form button {
+.form__button--submit {
   margin-top: 20px;
+  border: 1px solid black;
+  cursor: pointer;
 }
 
-.form__button--submit-enabled {
+.form__button--submit:enabled {
   background: #45aaf2;
+}
+
+.form__button--submit:disabled {
+  cursor: not-allowed;
 }

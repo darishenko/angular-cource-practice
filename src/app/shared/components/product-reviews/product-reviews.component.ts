@@ -24,7 +24,6 @@ export class ProductReviewsComponent implements OnInit {
     this.reviewService
       .getByProductId(this.productId)
       .subscribe((reviews: Review[]) => {
-        console.log(reviews);
         this.reviews = reviews;
       });
   }

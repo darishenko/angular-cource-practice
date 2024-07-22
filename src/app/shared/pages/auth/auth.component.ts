@@ -50,8 +50,8 @@ export class AuthComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
-      Validators.pattern('^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d]*$'),
+      Validators.minLength(7),
+      Validators.pattern('^(?=.*[A-Z])(?=.*\\d)[A-Za-z\\d_]*$'),
     ]),
   });
 
@@ -67,7 +67,9 @@ export class AuthComponent {
       .subscribe(
         (result) => {
           this.loggedInFailed = !result;
-          this.navigateToHomePage();
+          if (result) {
+            this.navigateToHomePage();
+          }
         },
         () => {
           this.loggedInFailed = true;
