@@ -1,0 +1,20 @@
+.badge {
+  margin-right: 10px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid black;
+  background: #45aaf2;
+}
+
+.badge__title {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.badge__delete-button {
+  margin-right: 10px;
+  margin-left: auto;
+  margin-top: 3px;
+  cursor: pointer;
+}

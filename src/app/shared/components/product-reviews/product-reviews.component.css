@@ -1,0 +1,14 @@
+.product-review {
+  margin: 20px;
+  display: flex;
+  gap: 30px;
+}
+
+.product-review__profile-pic {
+  font-size: 45px;
+}
+
+.product-review__rating span {
+  font-style: oblique;
+  opacity: 60%;
+}
