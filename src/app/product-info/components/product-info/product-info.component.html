@@ -11,7 +11,7 @@
         ) reviews</span>
     </div>
     <app-add-to-cart-button (wasCountChanged)="handleCartCountChange($event)" [cartCount]="cartCount"
-                            [disabled]="(product.stock ?? 0 )< 1"
+                            [disabled]="!product.stock || product.stock < 1"
                             [itemId]="product.id" [maxCount]="product.stock ?? 0"></app-add-to-cart-button>
     <p [availableCount]="product.stock" appProductAvailability></p>
     <b>Price: {{ product.price }}$</b>
