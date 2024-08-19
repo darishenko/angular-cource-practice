@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons/faSignOutAlt';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons/faShoppingCart';
-import { AuthService } from '../../services/auth/auth.service';
+import { AuthService } from '../../../auth/services/auth/auth.service';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
 

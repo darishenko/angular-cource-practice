@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './shared/pages/home/home.component';
-import { ProductDetailsComponent } from './shared/pages/product-details/product-details.component';
-import { ProductEditComponent } from './shared/pages/product-edit/product-edit.component';
-import { CartComponent } from './shared/pages/cart/cart.component';
-import { AuthComponent } from './shared/pages/auth/auth.component';
-import { authGuard } from './shared/guard/auth/auth.guard';
+import { HomeComponent } from './home/pages/home.component';
+import { ProductDetailsComponent } from './product-info/pages/product-details.component';
+import { ProductEditComponent } from './product-info-edit/pages/product-edit.component';
+import { CartComponent } from './cart/pages/cart.component';
+import { AuthComponent } from './auth/pages/auth.component';
+import { authGuard } from './auth/guards/auth.guard';
 
 export const routes: Routes = [
   { path: 'auth', component: AuthComponent },
