@@ -2,14 +2,17 @@
   <img alt="{{product.title}}" src="{{product.image}}" title="{{product.title}}">
   <div class="product-info__details">
     <h1>{{ product.title }}</h1>
-    <div class="product-info__rating">
-      <app-rating [rating]="product.rating.rate"/>
-      <span>{{ product.rating.rate }}</span>
-      <span class="product-info__rating-review-count">({{ product.rating.count + " reviews" }})</span>
+    <div *ngIf="product.rating" class="product-info__rating">
+      <div *ngIf="product.rating.rate">
+        <app-rating [rating]="product.rating.rate"/>
+        <span>{{ product.rating.rate }}</span>
+      </div>
+      <span *ngIf="product.rating.count" class="product-info__rating-review-count">({{ product.rating.count }}
+        ) reviews</span>
     </div>
     <app-add-to-cart-button (wasCountChanged)="handleCartCountChange($event)" [cartCount]="cartCount"
-                            [disabled]="product.stock < 1"
-                            [itemId]="product.id" [maxCount]="product.stock"></app-add-to-cart-button>
+                            [disabled]="(product.stock ?? 0 )< 1"
+                            [itemId]="product.id" [maxCount]="product.stock ?? 0"></app-add-to-cart-button>
     <p [availableCount]="product.stock" appProductAvailability></p>
     <b>Price: {{ product.price }}$</b>
     <p>{{ product.description }}</p>

@@ -5,7 +5,7 @@
     <fa-icon [icon]="faUserCircle" class="product-review__profile-pic"/>
     <div>
       <b>{{ review.name }}</b>
-      <div>
+      <div *ngIf="review.rate">
         <app-rating [rating]="review.rate"/>
         <span>{{ review.rate }}</span>
       </div>

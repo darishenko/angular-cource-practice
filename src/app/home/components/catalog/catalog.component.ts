@@ -60,6 +60,6 @@ export class CatalogComponent implements OnInit {
 
   getCartCount(productId: number): number {
     const item = this.cartItems.find((cartItem) => cartItem.id === productId);
-    return item ? item.count : 0;
+    return item?.count ?? 0;
   }
 }

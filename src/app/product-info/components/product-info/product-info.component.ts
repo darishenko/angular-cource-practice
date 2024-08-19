@@ -32,7 +32,7 @@ export class ProductInfoComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.getItem(this.product.id).subscribe(
       (item: CartItem) => {
-        this.cartCount = item.count;
+        this.cartCount = item.count ?? 0;
       },
       () => {
         this.cartCount = 0;

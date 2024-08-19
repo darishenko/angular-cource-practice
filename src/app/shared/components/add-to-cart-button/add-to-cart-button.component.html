@@ -6,5 +6,5 @@
 <div *ngIf="cartCount>0" class="cart-counter">
   <button (click)="decrementCartCount()">-</button>
   <span>{{ cartCount }}</span>
-  <button (click)="incrementCartCount()" [disabled]="maxCount === cartCount">+</button>
+  <button (click)="incrementCartCount()" [disabled]="disabled || !maxCount || maxCount === cartCount">+</button>
 </div>

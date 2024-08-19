@@ -12,8 +12,9 @@ import {
   standalone: true,
 })
 export class ProductAvailabilityDirective implements OnChanges {
-  @Input() availableCount!: number;
+  @Input() availableCount?: number;
 
+  private readonly DEFAULT_AVAILABILITY_COUNT = 0;
   private readonly AVAILABILITY_OPTIONS = [
     {
       value: 'In stock',
@@ -39,7 +40,9 @@ export class ProductAvailabilityDirective implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['availableCount']) {
-      const availability = this.getAvailability(this.availableCount);
+      const availability = this.getAvailability(
+        this.availableCount || this.DEFAULT_AVAILABILITY_COUNT,
+      );
 
       this.renderer.setStyle(
         this.elementRef.nativeElement,

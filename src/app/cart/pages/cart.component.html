@@ -10,9 +10,9 @@
   <tr *ngFor="let cartItem of cartItems" @hiddenVisible>
     <td>{{ cartItem.id }}</td>
     <td>{{ cartItem.title }}</td>
-    <td>{{ cartItem.count }}</td>
-    <td>{{ cartItem.price }}</td>
-    <td>{{ cartItem.count * cartItem.price }}</td>
+    <td>{{ cartItem.count ?? 0 }}</td>
+    <td>{{ cartItem.price ?? 0 }}</td>
+    <td>{{ cartItem.count && cartItem.price ? cartItem.count * cartItem.price : 0 }}</td>
     <td>
       <fa-icon (click)="deleteItem(cartItem.id)" [icon]="faTimes"></fa-icon>
     </td>
