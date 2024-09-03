@@ -35,7 +35,7 @@
         <input formControlName="hasReviews" id="reviews" type="checkbox">
         <label for="reviews">Has reviews</label>
       </div>
-      <button type="submit">Find</button>
+      <button [disabled]="productFilterForm.invalid" type="submit">Find</button>
       <button (click)="resetFilter()" type="button">Clear filter</button>
     </form>
     <div class="filter__found-counter">
