@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { FilterQueryService } from './filter.query.service';
+import { FilterQueryService } from './filter-query.service';
 
 describe('FilterQueryService', () => {
   let service: FilterQueryService;

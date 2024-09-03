@@ -14,8 +14,6 @@ export class FilterQueryService {
     hasReviews: { param: 'rating.count_gt', initValue: 0 },
   };
 
-  constructor() {}
-
   createFilterHttpParams(formValues: { [key: string]: any }): HttpParams {
     let httpParams = new HttpParams();
     for (const param in formValues) {

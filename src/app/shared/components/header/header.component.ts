@@ -16,6 +16,8 @@ import { RouterLink } from '@angular/router';
 export class HeaderComponent implements OnInit {
   isUserAuthenticated = false;
   userName?: string;
+  protected readonly faSignOutAlt = faSignOutAlt;
+  protected readonly faShoppingCart = faShoppingCart;
 
   constructor(private authService: AuthService) {}
 
@@ -29,7 +31,4 @@ export class HeaderComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
-
-  protected readonly faSignOutAlt = faSignOutAlt;
-  protected readonly faShoppingCart = faShoppingCart;
 }

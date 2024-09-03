@@ -10,7 +10,7 @@ import {
 } from '@angular/forms';
 import { NgClass, NgForOf, NgIf } from '@angular/common';
 import { ProductService } from '../../shared/services/product/product.service';
-import { FilterQueryService } from '../services/filter.query.service';
+import { FilterQueryService } from '../services/filter-query.service';
 import { Product } from '../../shared/models/product/product.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { take } from 'rxjs';
