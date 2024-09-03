@@ -36,22 +36,17 @@ export class CartService {
   }
 
   public updateItem(cartItem: CartItem): Observable<CartItem> {
-    const itemId = cartItem.id;
-    if (cartItem.count === 0) {
-      return this.deleteItem(itemId).pipe(catchError(this.handleError));
-    } else {
-      return this.httpClient
-        .patch<CartItem>(this.baseUrl + `/${itemId}`, cartItem)
-        .pipe(
-          catchError((error) => {
-            if (error instanceof HttpErrorResponse && error.status === 404) {
-              return this.addItem(cartItem);
-            } else {
-              return this.handleError(error);
-            }
-          }),
-        );
-    }
+    return this.httpClient
+      .patch<CartItem>(this.baseUrl + `/${cartItem.id}`, cartItem)
+      .pipe(
+        catchError((error) => {
+          if (error instanceof HttpErrorResponse && error.status === 404) {
+            return this.addItem(cartItem);
+          } else {
+            return this.handleError(error);
+          }
+        }),
+      );
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {

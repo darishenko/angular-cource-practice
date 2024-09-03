@@ -47,6 +47,14 @@ export class ProductInfoComponent implements OnInit {
       $event.count,
       this.product.price,
     );
-    this.cartService.updateItem(cartItem).subscribe();
+    this.updateCart(cartItem);
+  }
+
+  private updateCart(cartItem: CartItem) {
+    if (cartItem.count === 0) {
+      this.cartService.deleteItem(cartItem.id).subscribe();
+    } else {
+      this.cartService.updateItem(cartItem).subscribe();
+    }
   }
 }

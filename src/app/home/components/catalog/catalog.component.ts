@@ -55,11 +55,19 @@ export class CatalogComponent implements OnInit {
       $event.count,
       product!.price,
     );
-    this.cartService.updateItem(cartItem).subscribe();
+    this.updateCart(cartItem);
   }
 
   getCartCount(productId: number): number {
     const item = this.cartItems.find((cartItem) => cartItem.id === productId);
     return item?.count ?? 0;
+  }
+
+  private updateCart(cartItem: CartItem) {
+    if (cartItem.count === 0) {
+      this.cartService.deleteItem(cartItem.id).subscribe();
+    } else {
+      this.cartService.updateItem(cartItem).subscribe();
+    }
   }
 }
