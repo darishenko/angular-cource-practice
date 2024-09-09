@@ -3,27 +3,31 @@
     <form (ngSubmit)="filter()" [formGroup]="productFilterForm" class="filter">
       <div class="filter__price">
         <b>Rating</b>
-        <input [ngClass]="{'filter__input--invalid' : productFilterForm.get('ratingFrom')?.invalid}"
+        <input [ngClass]="{'filter__input--invalid' : ratingFrom?.invalid}"
                formControlName="ratingFrom"
                placeholder="From 0" type="number">
-        <input [ngClass]="{'filter__input--invalid' : productFilterForm.get('ratingTo')?.invalid}"
+        <input [ngClass]="{'filter__input--invalid' : ratingTo?.invalid}"
                formControlName="ratingTo"
                placeholder="To 5" type="number">
-        <p *ngIf="productFilterForm.get('ratingFrom')?.hasError('min')
-      || productFilterForm.get('ratingTo')?.hasError('min')" class="filter__message--invalid">
+        <p *ngIf="ratingFrom?.hasError('min')
+        || ratingTo?.hasError('min')" class="filter__message--invalid">
           The minimum allowed value is 0!
+        </p>
+        <p *ngIf="ratingFrom?.hasError('max')
+        || ratingTo?.hasError('max')" class="filter__message--invalid">
+          The maximum allowed value is 5!
         </p>
       </div>
       <div>
         <b>Price</b>
-        <input [ngClass]="{'filter__input--invalid' : productFilterForm.get('priceFrom')?.invalid}"
+        <input [ngClass]="{'filter__input--invalid' :priceFrom?.invalid}"
                formControlName="priceFrom"
                placeholder="From" type="number">
-        <input [ngClass]="{'filter__input--invalid' : productFilterForm.get('priceTo')?.invalid}"
+        <input [ngClass]="{'filter__input--invalid' : priceTo?.invalid}"
                formControlName="priceTo"
                placeholder="To" type="number">
-        <p *ngIf="productFilterForm.get('priceFrom')?.hasError('min')
-      || productFilterForm.get('priceTo')?.hasError('min')" class="filter__message--invalid">
+        <p *ngIf="priceFrom?.hasError('min')
+      || priceTo?.hasError('min')" class="filter__message--invalid">
           The minimum allowed value is 0!
         </p>
       </div>

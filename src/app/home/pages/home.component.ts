@@ -49,8 +49,8 @@ export class HomeComponent implements OnInit {
   productFilterForm = new FormGroup({
     priceTo: new FormControl(null, [Validators.min(0)]),
     priceFrom: new FormControl(null, [Validators.min(0)]),
-    ratingTo: new FormControl(null, [Validators.min(0)]),
-    ratingFrom: new FormControl(null, [Validators.min(0)]),
+    ratingTo: new FormControl(null, [Validators.min(0), Validators.max(5)]),
+    ratingFrom: new FormControl(null, [Validators.min(0), Validators.max(5)]),
     inStock: new FormControl(null),
     hasReviews: new FormControl(null),
   });
@@ -61,6 +61,22 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
   ) {}
+
+  get ratingTo() {
+    return this.productFilterForm.get('ratingTo');
+  }
+
+  get ratingFrom() {
+    return this.productFilterForm.get('ratingFrom');
+  }
+
+  get priceTo() {
+    return this.productFilterForm.get('priceTo');
+  }
+
+  get priceFrom() {
+    return this.productFilterForm.get('priceFrom');
+  }
 
   ngOnInit(): void {
     this.route.queryParams.pipe(take(1)).subscribe((params) => {
