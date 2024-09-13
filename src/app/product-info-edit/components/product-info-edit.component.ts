@@ -25,6 +25,26 @@ export class ProductInfoEditComponent implements OnChanges {
 
   constructor(private productService: ProductService) {}
 
+  get image() {
+    return this.productEditForm.get('image');
+  }
+
+  get title() {
+    return this.productEditForm.get('title');
+  }
+
+  get price() {
+    return this.productEditForm.get('price');
+  }
+
+  get stock() {
+    return this.productEditForm.get('stock');
+  }
+
+  get description() {
+    return this.productEditForm.get('description');
+  }
+
   ngOnChanges(changes: SimpleChanges): void {
     if (this.product && changes['product']) {
       this.productEditForm = new FormGroup({

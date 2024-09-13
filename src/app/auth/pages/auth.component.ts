@@ -60,6 +60,14 @@ export class AuthComponent {
     private router: Router,
   ) {}
 
+  get email() {
+    return this.authForm.get('email');
+  }
+
+  get password() {
+    return this.authForm.get('password');
+  }
+
   signIn(): void {
     const authFormValues = this.authForm.value;
     this.authService
