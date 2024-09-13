@@ -1,0 +1,15 @@
+<section *ngIf="reviews">
+  <h1>Reviews:</h1>
+  <p *ngIf="reviews.length < 1">There are no reviews about this product :(</p>
+  <article *ngFor="let review of reviews" class="product-review">
+    <fa-icon [icon]="faUserCircle" class="product-review__profile-pic"/>
+    <div>
+      <b>{{ review.name }}</b>
+      <div *ngIf="review.rate">
+        <app-rating [rating]="review.rate"/>
+        <span>{{ review.rate }}</span>
+      </div>
+      <p>{{ review.text }}</p>
+    </div>
+  </article>
+</section>

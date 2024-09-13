@@ -1,0 +1,27 @@
+<section class="catalog__cards">
+  <article *ngFor="let product of products" class="card" id="catalog-card-{{product.id}}">
+    <a class="card__item-link" routerLink="/product/{{product.id}}">
+      <div class="card__content">
+        <img alt="{{product.title}}" class="card__img" src="{{product.image}}" title="{{product.title}}">
+        <div class="card__details">
+          <p class="card__name">{{ product.title }}</p>
+          <app-rating *ngIf="product.rating && product.rating.rate" [rating]="product.rating.rate"/>
+          <p class="card__price">{{ product.price }} $</p>
+        </div>
+      </div>
+    </a>
+    <div class="card__buttons">
+      <app-add-to-cart-button (wasCountChanged)="handleCartCountChange($event)" [cartCount]="getCartCount(product.id)"
+                              [disabled]="!product.stock || product.stock < 1"
+                              [itemId]="product.id"
+                              [maxCount]="product.stock ?? 0"></app-add-to-cart-button>
+      <button routerLink="/product/edit/{{product.id}}">
+        edit
+      </button>
+      <button (click)="deleteProduct(product.id)">
+        delete
+      </button>
+    </div>
+  </article>
+  <p *ngIf="products && products.length === 0">No products were found!</p>
+</section>

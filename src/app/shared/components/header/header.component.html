@@ -1,0 +1,21 @@
+<header class="header">
+  <div class="header__title">
+    <i></i>
+    <h1>Online shop</h1>
+  </div>
+  <div class="header__sections">
+    <div class="header__section header__menu">
+      <ul>
+        <li class="header__link" routerLink="/">Shop</li>
+        <li *ngIf="!isUserAuthenticated" class="header__link" routerLink="/auth">Authentication</li>
+        <li class="header__link" routerLink="/cart">
+          <fa-icon [icon]="faShoppingCart"></fa-icon>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="isUserAuthenticated" class="header__section header__section--right">
+      <p>Hello, {{ userName }}!</p>
+      <fa-icon (click)="logout()" [icon]="faSignOutAlt" class="header__link"></fa-icon>
+    </div>
+  </div>
+</header>

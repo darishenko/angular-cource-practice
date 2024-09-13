@@ -1,0 +1,53 @@
+<article *ngIf="product" class="product-info">
+  <form (ngSubmit)="updateProductInfo()" [formGroup]="productEditForm" class="product-info__form">
+    <label for="image">Image:</label>
+    <input [ngClass]="{'form__input--invalid': productEditForm.get('image')?.invalid}" formControlName="image"
+           id="image">
+    <p *ngIf="productEditForm.get('image')?.hasError('pattern')" class="form__message--invalid">
+      URL must start with "http://", "https://", or be empty!
+    </p>
+
+    <label for="title">Title:</label>
+    <input [ngClass]="{'form__input--invalid': productEditForm.get('title')?.invalid}" formControlName="title"
+           id="title">
+    <p *ngIf="productEditForm.get('title')?.hasError('required')" class="form__message--invalid">
+      The field must be filled in!
+    </p>
+
+    <label for="price">Price:</label>
+    <input [ngClass]="{'form__input--invalid': productEditForm.get('price')?.invalid}" formControlName="price"
+           id="price" type="number">
+    <p *ngIf="productEditForm.get('price')?.hasError('required')" class="form__message--invalid">
+      The field must be filled in!
+    </p>
+    <p *ngIf="productEditForm.get('price')?.hasError('pattern')" class="form__message--invalid">
+      Must be a number!
+    </p>
+    <p *ngIf="!productEditForm.get('price')?.hasError('pattern')
+      && productEditForm.get('price')?.hasError('decimalPlaces')" class="form__message--invalid">
+      Number must have at most 2 decimal places!
+    </p>
+    <p *ngIf="productEditForm.get('price')?.hasError('min')" class="form__message--invalid">
+      The minimum allowed value is 0.01!
+    </p>
+
+    <label for="stock">Number in stock:</label>
+    <input [ngClass]="{'form__input--invalid': productEditForm.get('stock')?.invalid}" formControlName="stock"
+           id="stock"
+           type="number">
+    <p *ngIf="productEditForm.get('stock')?.hasError('required')" class="form__message--invalid">
+      The field must be filled in!
+    </p>
+    <p *ngIf="productEditForm.get('stock')?.hasError('pattern')" class="form__message--invalid">
+      Must be a positive integer!
+    </p>
+
+    <label for="description">Description:</label>
+    <textarea [ngClass]="{'form__input--invalid': productEditForm.get('description')?.invalid}"
+              formControlName="description" id="description"></textarea>
+
+    <button [disabled]="productEditForm.invalid" class="form__button--submit" type="submit">Save</button>
+    <p *ngIf="isUpdateSuccessful" class="form__message--success">Product information has been updated successfully!</p>
+  </form>
+  <img alt="{{product.title}}" src="{{product.image}}" title="{{product.title}}">
+</article>

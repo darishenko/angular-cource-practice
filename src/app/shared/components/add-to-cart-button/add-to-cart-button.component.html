@@ -1,0 +1,10 @@
+<div>
+  <button (click)="incrementCartCount()" *ngIf="cartCount===0" [disabled]="disabled">
+    add to cart
+  </button>
+</div>
+<div *ngIf="cartCount>0" class="cart-counter">
+  <button (click)="decrementCartCount()">-</button>
+  <span>{{ cartCount }}</span>
+  <button (click)="incrementCartCount()" [disabled]="disabled || !maxCount || maxCount === cartCount">+</button>
+</div>

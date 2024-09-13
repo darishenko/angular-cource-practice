@@ -1,0 +1,48 @@
+.auth-form {
+  margin: 40px auto;
+  padding: 30px 60px 30px 60px;
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border: 3px solid #45aaf2;
+  border-radius: 10px;
+}
+
+.auth-form label {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.auth-form__title {
+  text-align: center;
+}
+
+.auth-form__note {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.auth-form__link {
+  color: #45aaf2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-form__button {
+  margin-top: 30px;
+  padding: 2px;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.auth-form__button:disabled {
+  cursor: not-allowed;
+}
+
+.auth-form__button:enabled {
+  background: #45aaf2;
+}
+
+.auth-form__message--error {
+  color: red;
+}
